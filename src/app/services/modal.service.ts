@@ -9,7 +9,7 @@ interface IModal{
   providedIn: 'root'
 })
 export class ModalService {
-  private modals:IModal[] = [ ]  
+  public modals:IModal[] = [ ]  
 
   constructor() { }
 
@@ -22,12 +22,20 @@ export class ModalService {
     
   }
 
-
-  isModelOpen(){
-    return true
+  unregister(id:string){
+    this.modals = this.modals.filter(element => element.id !==id)
   }
 
-  toggleModal(){
+
+  isModelOpen(id:string):boolean{
+     return  !! this.modals.find(element => element.id === id )?.visible
+  }
+
+  toggleModal(id:string){
+    const modal = this.modals.find(element => element.id === id )
+    if(modal){
+      modal.visible = !modal.visible
+    }
     // this.visible = !this.visible
   }
 }
