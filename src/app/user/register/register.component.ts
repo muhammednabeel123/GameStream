@@ -1,3 +1,4 @@
+import { AlertComponent } from './../../shared/alert/alert.component';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup,Validator, Validators } from '@angular/forms';
 
@@ -35,7 +36,9 @@ export class RegisterComponent {
     Validators.maxLength(13)
   ])
 
-
+  showAlert = false
+  alertMsg = 'Please wait! Your account is being created'
+  alertColor = 'blue'
   registerForm = new FormGroup({
 
     name: this.name,
@@ -48,5 +51,12 @@ export class RegisterComponent {
   
 
   })
+
+  register(){
+   this.showAlert = true
+   this.alertMsg = 'Please wait! Your account is being created'
+   this.alertColor = 'blue'
+    
+  }
 
 }
