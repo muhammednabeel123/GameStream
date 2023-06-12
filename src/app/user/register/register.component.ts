@@ -1,9 +1,13 @@
+
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AlertComponent } from './../../shared/alert/alert.component';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup,Validator, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import IUser from 'src/app/models/user.model';
+import { RegisterValidators } from '../validators/register-validators';
+import { EmailTaken } from '../validators/email-taken';
+
 
 
 @Component({
@@ -12,7 +16,7 @@ import IUser from 'src/app/models/user.model';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private auth : AuthService){}
+  constructor(private auth : AuthService,private emailtaken : EmailTaken){}
   inSubmission = false
 
   name =  new FormControl('',[
@@ -23,7 +27,7 @@ export class RegisterComponent {
   email = new FormControl('',[
     Validators.required,
     Validators.email
-  ])
+  ],[this.emailtaken.validate])
   age = new FormControl<number | null>(null ,[
     Validators.required,
     Validators.min(18),
@@ -57,7 +61,7 @@ export class RegisterComponent {
 
   
 
-  })
+  },[RegisterValidators.match('password','confirm_password ')])
 
 
   async register(){
