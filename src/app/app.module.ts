@@ -13,6 +13,7 @@ import { AngularFirestoreModule} from '@angular/fire/compat/firestore'
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { ClipComponent } from './clip/clip.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AboutComponent } from './about/about.component';
     AppComponent,
     NavComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    ClipComponent
   ],
   imports: [
     BrowserModule,
