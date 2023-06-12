@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ClipComponent } from './clip/clip.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
@@ -22,16 +23,18 @@ import { ClipComponent } from './clip/clip.component';
     NavComponent,
     HomeComponent,
     AboutComponent,
-    ClipComponent
+    ClipComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+  
     UserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    VideoModule
+    VideoModule,
+    AppRoutingModule
 
   ],
   providers: [],
